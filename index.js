@@ -16,15 +16,16 @@ module.exports = class DynamoDBStorage {
    * if no table name is provided.
    * @param {string} [options.region='us-west-2'] - Region the DynamoDB table is in. Default to us-west-2 (Oregon).
    * @param {string} [options.keyName='migrationName'] - The hash key name of the table.
+   * @param {string} [options.endpoint] - The endpoint url to be used -- useful for local
    *
    * @throws Error
    */
-  constructor ({ tableName = '', region = 'us-west-2', keyName = 'migrationName' } = {}) {
+  constructor ({ tableName = '', region = 'us-west-2', keyName = 'migrationName', endpoint } = {}) {
     if (!tableName) {
       throw new Error('A "tableName" storage option is required.')
     }
 
-    this.dynamoClient = new DynamoDBClient({ region })
+    this.dynamoClient = new DynamoDBClient({ region, endpoint })
     this.tableName = tableName
     this.keyName = keyName
   }
