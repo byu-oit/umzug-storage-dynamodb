@@ -1,5 +1,5 @@
 {
-  "name": "umzug-storage-dynamodb",
+  "name": "@byu-oit/umzug-storage-dynamodb",
   "version": "0.3.1",
   "description": "DynamoDB storage for Umzug migration logs.",
   "main": "index.js",
@@ -18,7 +18,7 @@
     "migrations",
     "database"
   ],
-  "author": "Blake Morgan",
+  "author": "Jamie Visker",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/byu-oit/dynamodb-umzug-storage/issues"
