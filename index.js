@@ -83,8 +83,10 @@ module.exports = class DynamoDBStorage {
       })
       .catch((e) => {
         console.error(e)
-        console.warn('Fail to get logged migrations. Returning an empty list.')
-        return []
+        // DO NOT ASSUME an EMPTY LIST. If there is an error it may just be fetching the list.
+        // Running migrations multiple times is a recipe for disaster.
+        console.warn('Fail to get logged migrations. Throwing an error.')
+        throw e
       })
   }
 }
