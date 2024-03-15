@@ -35,7 +35,7 @@ module.exports = class DynamoDBStorage {
    * @param migrationName - Name of the migration to be logged.
    * @returns {Promise}
    */
-  async logMigration (migrationName) {
+  async logMigration ({ name: migrationName }) {
     return this.dynamoClient.send(new PutItemCommand({
       TableName: this.tableName,
       Item: {
@@ -52,7 +52,7 @@ module.exports = class DynamoDBStorage {
    * @param migrationName - Name of the migration to be logged.
    * @returns {Promise}
    */
-  async unlogMigration (migrationName) {
+  async unlogMigration ({ name: migrationName }) {
     return this.dynamoClient.send(new DeleteItemCommand({
       TableName: this.tableName,
       Key: {
